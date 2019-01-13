@@ -6,6 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(dplyr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -17,43 +18,54 @@ This is an R Markdown document including the solutions to the laboratory 3 for t
 
 Using the functions implemented in the file `code.R`.
 
-```{r file_load, error=FALSE}
-# source("./code.R")
+```{r file_load, include=FALSE}
+source("code.R")
 ```
 
 
 ### 1.1 Obtención de la página web
 
-```{r get_title, include=FALSE}
+```{r get_title, echo=FALSE}
+xml <- get_page(url)
 
 ```
 
 
 ### 1.2 Analisis de el contenido de la web
 
-```{r web_content, include=FALSE}
-
+```{r web_content, echo=FALSE}
+title <- get_title(xml)
+print(title)
 ```
 
 
 ### 1.3.	Extracción de enlaces 
 
 
-```{r get_links, include=FALSE}
-
+```{r get_links, echo=FALSE}
+links <- get_links(xml)
 ```
 
 
 ### 1.4 Exploración de enlaces
 
-```{r expl_links, include=FALSE}
-
+```{r expl_links, echo=FALSE}
+df <- handle_links(links)
 ```
 
 ### Gráficos en R
 
 ### 2.1	Histograma
+```{r , echo=FALSE}
+make_histogram(df)
+```
 
 ### 2.2	Un gráfico de barras
+```{r , echo=FALSE}
+bar_plot(df)
+```
 
 ### 2.3 Pie Chart
+```{r , echo=FALSE}
+pie_chart(df)
+```
